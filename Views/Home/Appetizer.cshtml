@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Apetizer";
+
+    string[] tableHeaders = new string[]
+                                {
+      "Image"
+      ,"MenuItemId"
+      ,"ItemName"
+      ,"Description"
+      ,"Price"
+                        };
+}
+
+<h1>Appetizer Menu</h1>
+<div class="container container-padding transparent-bg" style="text-align:left;">
+    <div class="table">
+        <table class="table border table-hover">
+            <thead>
+                <tr>
+                    @{
+                        foreach (var head in tableHeaders)
+                        {
+                                    <th>
+                                @head
+                                    </th>
+                        }
+                    }
+                </tr>
+            </thead>
+            @{
+                if (Model != null)
+                {
+                    foreach (var Data in Model)
+                    {
+
+                                    <tr>
+                                        <td>
+                                             <div class="col-md-3 col-sm-12">
+                                                <img src="@Url.Content(@Data.Image)" style="border-radius:5px;border:5px; width:200px; height:200px; padding: 10px;" />
+                                            </div>
+                                        </td>
+                                        <td>
+                                @Data.MenuItemId
+                                        </td>
+                                        <td>
+                                @Data.ItemName
+                                        </td>
+                                        <td>
+                                @Data.Description
+                                        </td>
+
+                                        <td>
+                                @Data.Price
+                                            <a href="#" class="btn btn-outline-secondary">Order here</a>
+
+                                        </td>
+                                    </tr>
+                    }
+                }
+            }
+        </table>
+    </div>
+
+
+</div>
